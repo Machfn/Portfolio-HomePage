@@ -1,0 +1,88 @@
+html {
+    background: rgba(40, 40, 40, 1);
+    font-family: "Doto", sans-serif;
+    font-optical-sizing: auto;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 98vh;
+}
+#terminal-wrapper {
+    min-width: 490px;
+    width: 60%;
+    height: 50%;
+    background: rgba(44, 44, 44, 0.4);
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+}
+.tab {
+    padding-top: 0;
+    margin-top: 0;
+    color: rgb(1, 44, 1);
+    font-weight: 10rem;
+    text-align: center;
+    background-color: rgba(140, 140, 140, 0.7);
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+.tab h2 {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+#terminal-body {
+    box-sizing: border-box;
+    padding: 5px;
+    min-width: 490px;
+    background-color: rgba(20,20,20, 0.8);
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    width: 0.5vw;   
+}
+::-webkit-scrollbar-track {
+    background: rgba(30,30,30,0.5);
+    border-radius: 1rem;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: rgba(120,120,120, 0.6);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(120,120,120);
+}
+#terminal-body p {
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.usrCommand {
+    background: rgba(0,0,0,0);
+    color: white;
+    font-family: "Doto", sans-serif;
+    border: none;
+    outline: none;
+    font-size: large;
+}
+.dire {
+    color: rgb(1, 253, 1) !important;
+}
+.error-msg {
+    color: red !important;
+}
+.linkedP {
+    color: rgb(87, 119, 224);
+    text-decoration: none;
+    font-size: large;
+}
+
+
+
+
