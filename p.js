@@ -6,7 +6,20 @@ window.onload = () => {
     let controller = new AbortController();
     let signal = controller.signal;
     //let inputBar = `<p class="dire">portfolio@benon.ca:~/<input type="text" name="cmdLine" class="usrCommand" id="currentCommand" ></p>`
-    const commands = ["projects"]
+    const commands = ["projects", "cd", "ls", "cat"]
+    const fakeFileSystem = [
+        "~", [
+            ["Projects", [
+                ["Open Directory"],
+                ["Portfolio"],
+                ["DogDetector"]
+            ]],
+            ["About",[
+                ["Info"]
+            ]]
+        ]
+    ]
+    let currentDir = fakeFileSystem[0]
 
     const updateInput = () => {
         controller.abort();
@@ -22,6 +35,15 @@ window.onload = () => {
         currentInput.focus();
     }
 
+    const ls = (above, args) => {
+        if (len(args) == 0) {
+            for (i in currentDir[1]) {
+                
+            }
+        } else {
+
+        }
+    }
 
     const help = () => {
         let menu = document.createElement("p");
