@@ -6,20 +6,27 @@ window.onload = () => {
     let controller = new AbortController();
     let signal = controller.signal;
     //let inputBar = `<p class="dire">portfolio@benon.ca:~/<input type="text" name="cmdLine" class="usrCommand" id="currentCommand" ></p>`
-    const commands = ["projects", "cd", "ls", "cat"]
+    const commands = ["projects", "cd", "ls"];
+    const linkDictionary = {
+        LinkedIn : "www.linkedin.com/in/ben-warkentin-779343386",
+        Github : "https://github.com/Machfn/",
+        OD : "https://github.com/Machfn/OpenDirectory/tree/main",
+        Portfolio : "https://github.com/Machfn/Portfolio-HomePage/tree/main"
+
+    }
     const fakeFileSystem = [
         "~", [
             ["Projects", [
-                ["Open Directory"],
-                ["Portfolio"],
-                ["DogDetector"]
+                ["Open Directory.gitlink"],
+                ["Portfolio.gitlink"],
+                ["DogDetector.gitlink"]
             ]],
             ["About",[
                 ["Info"]
             ]]
         ]
     ]
-    let currentDir = fakeFileSystem[0]
+    let currentDir = fakeFileSystem;
 
     const updateInput = () => {
         controller.abort();
@@ -35,13 +42,31 @@ window.onload = () => {
         currentInput.focus();
     }
 
-    const ls = (above, args) => {
-        if (len(args) == 0) {
+    const ls = (args) => {
+        if (args.length == 0) {
             for (i in currentDir[1]) {
-                
+                lP = document.createElement('p');
+                lP.textContent = `${currentDir[1][i][0]} \n`;
+                consoleArea.appendChild(lP);
             }
         } else {
-
+            let err = -1;
+            for (i in currentDir[1]) {
+                if (currentDir[1][i][0] == args[0]) {
+                    err += 1;
+                    for (j in currentDir[1][i]) {
+                        lP = document.createElement('p');
+                        lP.textContent = `${currentDir[1][i][j][0]} \n`;
+                        consoleArea.appendChild(lP);
+                    }
+                }
+            }
+            if (err < 0) {
+                errorMsg = document.createElement('p');
+                errorMsg.textContent = `No such directory ${args[0]} in scope`;
+                errorMsg.className = "error-msg"
+                consoleArea.appendChild(errorMsg)
+            }
         }
     }
 
@@ -104,6 +129,9 @@ window.onload = () => {
             newRunLine();
         } else if (splitCommands[0] == "clear") {
             consoleArea.innerHTML = "";
+            newRunLine();
+        } else if (splitCommands[0] == "ls") {
+            ls(splitCommands.slice(1))
             newRunLine();
         } else if (splitCommands[0] != "portfolio") {
             errorMsg = document.createElement('p');
